@@ -1,0 +1,92 @@
+{
+  "name": "daskeyboard-applet--hue",
+  "displayName": "Hue",
+  "version": "1.0.0",
+  "description": "Displays whether rooms lights are on or off.",
+  "longDescription": "Displays whether rooms lights are on or off.",
+  "officialProductName": "Hue",
+  "appUrl": "",
+  "isSingleton": true,
+  "videoUrl": "",
+  "icon": "assets/icon.png",
+  "image": "assets/q-cpu-usage.png",
+  "publisher": "DisabledMonkey",
+  "authorName": "DisabledMonkey",
+  "authorUrl": "https://github.com/DisabledMonkey",
+  "issuesUrl": "https://github.com/DisabledMonkey/daskeyboard-applet--hue/issues",
+  "homePageUrl": "https://github.com/DisabledMonkey/daskeyboard-applet--hue",
+  "developerRepoUrl": "https://github.com/DisabledMonkey/daskeyboard-applet--hue",
+  "licenseUrl": "http://www.gnu.org/licenses/old-licenses/gpl-2.0.txt",
+  "changelogUrl": "CHANGELOG.md",
+  "license": "MIT",
+  "readMeUrl": "README.md",
+  "readMeEndUserUrl": "README_ENDUSER.md",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "mocha"
+  },
+  "engines": {
+    "das-keyboard-q": "3.0.0"
+  },
+  "dependencies": {
+    "daskeyboard-applet": "^2.7.12",
+    "iohook": "^0.5.0",
+    "mocha": "^5.2.0",
+    "node-hue-api": "^2.4.6",
+    "request": "^2.88.0",
+    "settings-store": "^1.4.1"
+  },
+  "qConfig": {
+    "geometry": {
+      "width": 1,
+      "height": 1,
+      "defaults": {
+        "origin": {
+          "x": 0,
+          "y": 0
+        }
+      }
+    },
+    "questions": [
+      {
+        "key": "room",
+        "value": "",
+        "label": "Choose room",
+        "help": "Select the room you would like to see.",
+        "required": true,
+        "order": 1,
+        "controlType": "dropdown",
+        "dynamic": true
+      },
+      {
+        "key": "useLightColor",
+        "label": "Use light color for key color?",
+        "help": "If you want the key to be the color of your light (overrides On Color)",
+        "order": 2,
+        "controlType": "checkbox"
+      },
+      {
+        "key": "onColor",
+        "label": "Choose color for when lights are on",
+        "help": "This is the color that is displayed when the lights are on.",
+        "required": true,
+        "order": 3,
+        "value": "#00ff00",
+        "controlType": "color"
+      },
+      {
+        "key": "offColor",
+        "label": "Choose color for when lights are off",
+        "help": "This is the color that is displayed when the lights are off.",
+        "required": true,
+        "order": 3,
+        "value": "#111111",
+        "controlType": "color"
+      }
+    ],
+    "applet": {
+      "defaults": {}
+    }
+  }
+}
