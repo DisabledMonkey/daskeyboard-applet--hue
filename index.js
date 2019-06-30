@@ -1,6 +1,7 @@
 const q = require('daskeyboard-applet');
+const logger = q.logger;
 const HueBridge = require('./lib/hue.js').HueBridge;
-// const myhook = require('iohook'); // not working when run as applet
+//const QHook = require('./lib/q-hook.js').QHook;
 
 class HueQ extends q.DesktopApp {
     constructor() {
@@ -8,6 +9,7 @@ class HueQ extends q.DesktopApp {
         this.pollingInterval = 1000;
         this._rooms = null;
         this._room = null;
+        //QHook.on(this,this.toggle.bind(this));
     }
 
     async run() {
@@ -84,6 +86,11 @@ class HueQ extends q.DesktopApp {
         return this._room;
     }
 
+    async toggle() {
+        let room = await this.room();
+        room.toggle();
+    }
+
     async options(question) {
         switch (question) {
             case 'room':
@@ -99,7 +106,7 @@ class HueQ extends q.DesktopApp {
                 }
                 return options;
         }
-    }  
+    }
 }
 
 module.exports = {
