@@ -13,6 +13,7 @@ class HueQ extends q.DesktopApp {
     }
 
     async run() {
+        logger.info("Hue running.");
         try {
             let room = await this.room();
             room.refresh();
@@ -27,6 +28,7 @@ class HueQ extends q.DesktopApp {
                 isMuted: true,
             });
         } catch (e) {
+            logger.error(`Sending error signal: ${e}`);
             return new q.Signal({
                 points: [[new q.Point('#ff0000', q.Effects.BLINK)]],
                 name: 'Hue',
