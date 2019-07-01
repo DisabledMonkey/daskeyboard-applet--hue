@@ -6,7 +6,8 @@ const HueBridge = require('./lib/hue.js').HueBridge;
 class HueQ extends q.DesktopApp {
     constructor() {
         super();
-        this.pollingInterval = 1000;
+        // run every mintutes
+        this.pollingInterval = 60 * 1000;
         this._rooms = null;
         this._room = null;
         //QHook.on(this,this.toggle.bind(this));
