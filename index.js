@@ -6,19 +6,21 @@ const HueBridge = require('./lib/hue.js').HueBridge;
 class HueQ extends q.DesktopApp {
     constructor() {
         super();
-        this.pollingInterval = 1000;
+        // run every 30 seconds
+        this.pollingInterval = 30 * 1000;
         this._rooms = null;
         this._room = null;
         //QHook.on(this,this.toggle.bind(this));
     }
 
     async run() {
+        logger.info("Hue running.");
         try {
             let room = await this.room();
             room.refresh();
             return new q.Signal({
                 points: this.points(),
-                name: 'Hue',
+                name: 'Philips Hue',
                 message: this.message(),
                 link: {
                     url: '', // wish something like this could trigger applet code! possibly protocols hueq://togglelights/5 etc.
@@ -27,9 +29,10 @@ class HueQ extends q.DesktopApp {
                 isMuted: true,
             });
         } catch (e) {
+            logger.error(`Sending error signal: ${e}`);
             return new q.Signal({
                 points: [[new q.Point('#ff0000', q.Effects.BLINK)]],
-                name: 'Hue',
+                name: 'Philips Hue',
                 message: 'Failed to retrieve light information!',
                 isMuted: true
             });
@@ -102,7 +105,7 @@ class HueQ extends q.DesktopApp {
                         options.push({ key: room.bridge.id+'-'+room.id, value: room.name });
                     }
                 } else {
-                    options.push({ key: 0, value: 'Press the button on your hue bridge! Attempting to connect for the next 60 seconds.' });
+                    options.push({ key: 0, value: 'Please press the button on your hue bridge and start this configuration again.' });
                 }
                 return options;
         }
