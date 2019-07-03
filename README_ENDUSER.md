@@ -1,4 +1,4 @@
-# Q Applet: Philips Hue
+# Philips Hue
 
 Displays whether hue lights are on or off in a room on a Das Keyboard Q Series.
 
