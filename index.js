@@ -20,7 +20,7 @@ class HueQ extends q.DesktopApp {
             room.refresh();
             return new q.Signal({
                 points: this.points(),
-                name: 'Hue',
+                name: 'Philips Hue',
                 message: this.message(),
                 link: {
                     url: '', // wish something like this could trigger applet code! possibly protocols hueq://togglelights/5 etc.
@@ -32,7 +32,7 @@ class HueQ extends q.DesktopApp {
             logger.error(`Sending error signal: ${e}`);
             return new q.Signal({
                 points: [[new q.Point('#ff0000', q.Effects.BLINK)]],
-                name: 'Hue',
+                name: 'Philips Hue',
                 message: 'Failed to retrieve light information!',
                 isMuted: true
             });
