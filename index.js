@@ -105,7 +105,7 @@ class HueQ extends q.DesktopApp {
                         options.push({ key: room.bridge.id+'-'+room.id, value: room.name });
                     }
                 } else {
-                    options.push({ key: 0, value: 'Press the button on your hue bridge! Attempting to connect for the next 60 seconds.' });
+                    options.push({ key: 0, value: 'Please press the button on your hue bridge and start this configuration again.' });
                 }
                 return options;
         }
