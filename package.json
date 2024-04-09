@@ -1,7 +1,7 @@
 {
   "name": "daskeyboard-applet--philips-hue",
   "displayName": "Philips Hue",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "Displays lights status.",
   "longDescription": "Displays whether rooms lights are on or off.",
   "officialProductName": "Hue",
@@ -27,7 +27,7 @@
     "test": "mocha"
   },
   "engines": {
-    "das-keyboard-q": "3.0.0"
+    "das-keyboard-q": "4.0.0"
   },
   "dependencies": {
     "daskeyboard-applet": "^2.11.5",
